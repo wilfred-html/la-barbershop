@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Angeles Barbershop | Huntington Park, CA</title>
+    <meta name="description" content="Premium barbershop in Huntington Park serving the LA community. Walk-ins welcomed. Expert cuts by Luis, Carlos & Marinator.">
+    
+    <!-- Fonts: Bebas Neue for bold display, Outfit for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0A0A0A;
+            --gold: #D4A017;
+            --white: #FFFFFF;
+            --red: #C41E3A;
+            --gray: #1A1A1A;
+            --light-gray: #2A2A2A;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gold);
+            padding: 1rem 2rem;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8), rgba(196, 30, 58, 0.2)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            animation: zoomIn 20s ease-out infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(212, 160, 23, 0.03) 2px,
+                rgba(212, 160, 23, 0.03) 4px
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1000px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 8rem);
+            color: var(--gold);
+            text-shadow: 4px 4px 0 var(--red), 8px 8px 20px rgba(0, 0, 0, 0.8);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.5s backwards;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease 0.7s backwards;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease 0.9s backwards;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 3px solid var(--gold);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease 1.1s backwards;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-btn:hover::before {
+            left: 0;
+        }
+
+        .cta-btn:hover {
+            color: var(--black);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 160, 23, 0.5);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--gold);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--gray);
+            margin: 0;
+            max-width: 100%;
+            padding: 6rem 2rem;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .about-image {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Barbers Section */
+        .barbers {
+            background: var(--black);
+        }
+
+        .barbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .barber-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--light-gray);
+            border: 2px solid var(--gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .barber-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 160, 23, 0.3);
+        }
+
+        .barber-image {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .barber-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            filter: grayscale(100%);
+        }
+
+        .barber-card:hover .barber-image img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .barber-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .barber-name {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .barber-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--gray);
+            margin: 0;
+            max-width: 100%;
+            padding: 6rem 2rem;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--black);
+            padding: 2.5rem;
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(212, 160, 23, 0.2);
+        }
+
+        .service-name {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-desc {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        /* Special Promo */
+        .promo {
+            background: linear-gradient(135deg, var(--red), var(--gold));
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 4rem auto;
+            max-width: 1000px;
+            border: 5px solid var(--black);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.05) 10px,
+                rgba(255, 255, 255, 0.05) 20px
+            );
+            animation: slideStripes 20s linear infinite;
+        }
+
+        @keyframes slideStripes {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .promo-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .promo h3 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--black);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 0 var(--white);
+        }
+
+        .promo p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--black);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 350px;
+            border: 2px solid var(--gold);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.2);
+            transition: all 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0%) contrast(1);
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(212, 160, 23, 0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Location Section */
+        .location {
+            background: var(--gray);
+            margin: 0;
+            max-width: 100%;
+            padding: 6rem 2rem;
+        }
+
+        .location-content {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .location-info h3 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            margin-bottom: 2rem;
+        }
+
+        .info-item h4 {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-item p, .info-item a {
+            font-size: 1.1rem;
+            color: var(--white);
+            opacity: 0.9;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .info-item a:hover {
+            color: var(--gold);
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .map-container {
+            height: 500px;
+            border: 3px solid var(--gold);
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(100%) invert(90%) contrast(1.2);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--black);
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .contact-btns {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            padding: 1.2rem 2.5rem;
+            background: transparent;
+            color: var(--gold);
+            border: 3px solid var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 160, 23, 0.5);
+        }
+
+        .contact-btn.primary {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .contact-btn.primary:hover {
+            background: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            border-top: 2px solid var(--gold);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+            transform: scale(1.2);
+        }
+
+        .footer-info {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-top: 2rem;
+        }
+
+        .footer-info p {
+            margin: 0.5rem 0;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .about-content,
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+
+            .barbers-grid,
+            .services-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .contact-btns {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">LOS ANGELES BARBERSHOP</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#barbers">Barbers</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact">Book Now</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>LOS ANGELES<br>BARBERSHOP</h1>
+            <p class="hero-tagline">Huntington Park's Finest</p>
+            <p class="hero-subtitle">Where LA Street Culture Meets Premium Cuts</p>
+            <a href="#contact" class="cta-btn">Book Your Cut</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <h2 class="section-title" style="text-align: left;">Our Story</h2>
+                <h3>From the Early Grind to Fully Booked Days</h3>
+                <p>Los Angeles Barbershop isn't just a place to get a haircut—it's a community. A place where day ones still sit in the chair and know the journey. We've built this shop on loyalty, consistency, and respect for the craft.</p>
+                <p>Located in the heart of Huntington Park, we bring authentic LA street culture to every cut. No corporate vibes, no cookie-cutter styles—just real barbers who care about their work and the people in their chairs.</p>
+                <p>Walk-ins welcomed. Fresh cuts guaranteed. Premium service every time.</p>
+            </div>
+            <div class="about-image fade-in">
+                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" alt="Los Angeles Barbershop Interior">
+            </div>
+        </div>
+    </section>
+
+    <!-- Barbers Section -->
+    <section id="barbers" class="barbers">
+        <h2 class="section-title fade-in">Meet Your Barbers</h2>
+        <div class="barbers-grid">
+            <div class="barber-card fade-in">
+                <div class="barber-image">
+                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Luis - Master Barber">
+                </div>
+                <div class="barber-info">
+                    <h3 class="barber-name">Luis</h3>
+                    <p class="barber-title">Master Barber</p>
+                </div>
+            </div>
+            <div class="barber-card fade-in">
+                <div class="barber-image">
+                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" alt="Carlos - Senior Barber">
+                </div>
+                <div class="barber-info">
+                    <h3 class="barber-name">Carlos</h3>
+                    <p class="barber-title">Senior Barber</p>
+                </div>
+            </div>
+            <div class="barber-card fade-in">
+                <div class="barber-image">
+                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80" alt="Marinator - Barber">
+                </div>
+                <div class="barber-info">
+                    <h3 class="barber-name">Marinator</h3>
+                    <p class="barber-title">Barber</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title fade-in">Services & Pricing</h2>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <h3 class="service-name">Haircut</h3>
+                <p class="service-price">$25</p>
+                <p class="service-desc">Classic cut, tapered and styled to perfection</p>
+            </div>
+            <div class="service-card fade-in">
+                <h3 class="service-name">Fade</h3>
+                <p class="service-price">$30</p>
+                <p class="service-desc">Precision fade - low, mid, or high</p>
+            </div>
+            <div class="service-card fade-in">
+                <h3 class="service-name">Beard Trim</h3>
+                <p class="service-price">$20</p>
+                <p class="service-desc">Shape, trim, and clean lines</p>
+            </div>
+            <div class="service-card fade-in">
+                <h3 class="service-name">Lineup</h3>
+                <p class="service-price">$15</p>
+                <p class="service-desc">Sharp edge-up and shape-up</p>
+            </div>
+            <div class="service-card fade-in">
+                <h3 class="service-name">Hot Shave</h3>
+                <p class="service-price">$35</p>
+                <p class="service-desc">Traditional straight razor shave with hot towel</p>
+            </div>
+            <div class="service-card fade-in">
+                <h3 class="service-name">Cut + Beard</h3>
+                <p class="service-price">$40</p>
+                <p class="service-desc">Complete package - haircut and beard trim</p>
+            </div>
+        </div>
+
+        <!-- Special Promo -->
+        <div class="promo fade-in">
+            <div class="promo-content">
+                <h3>$5 OFF EVERY TUESDAY</h3>
+                <p>Walk-ins Only | All Services</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <h2 class="section-title fade-in">Our Work</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Fresh fade haircut">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?w=600&q=80" alt="Barber cutting hair">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1622296089863-eb7fc530daa8?w=600&q=80" alt="Clean lineup">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=600&q=80" alt="Barbershop interior">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1621607512214-68297480165e?w=600&q=80" alt="Beard trim service">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" alt="Barber at work">
+                <div class="gallery-overlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location">
+        <h2 class="section-title fade-in">Visit Us</h2>
+        <div class="location-content">
+            <div class="location-info fade-in">
+                <h3>Come Through</h3>
+                <div class="info-item">
+                    <h4>Address</h4>
+                    <p>3320 E Gage Ave<br>Huntington Park, CA 90255</p>
+                </div>
+                <div class="info-item">
+                    <h4>Phone</h4>
+                    <p><a href="tel:+13237496132">(323) 749-6132</a></p>
+                </div>
+                <div class="info-item">
+                    <h4>Hours</h4>
+                    <ul class="hours-list">
+                        <li><span>Monday</span> <span>9:00 AM - 6:30 PM</span></li>
+                        <li><span>Tuesday</span> <span>9:00 AM - 6:30 PM</span></li>
+                        <li><span>Wednesday</span> <span>9:00 AM - 6:30 PM</span></li>
+                        <li><span>Thursday</span> <span>9:00 AM - 6:30 PM</span></li>
+                        <li><span>Friday</span> <span>9:00 AM - 6:30 PM</span></li>
+                        <li><span>Saturday</span> <span>9:00 AM - 6:30 PM</span></li>
+                        <li><span>Sunday</span> <span>10:00 AM - 3:00 PM</span></li>
+                    </ul>
+                </div>
+                <div class="info-item">
+                    <p style="margin-top: 1.5rem; font-size: 1.2rem; font-weight: 600; color: var(--gold);">Walk-ins Welcomed</p>
+                </div>
+            </div>
+            <div class="map-container fade-in">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.8871447878456!2d-118.21871768478654!3d33.98004628063324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2cf2f7f7f7f7f%3A0x7f7f7f7f7f7f7f7f!2s3320%20E%20Gage%20Ave%2C%20Huntington%20Park%2C%20CA%2090255!5e0!3m2!1sen!2sus!4v1234567890123" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title fade-in">Book Your Appointment</h2>
+        <div class="contact-content fade-in">
+            <p>Ready for a fresh cut? Book your appointment online or walk in anytime during business hours.</p>
+            <div class="contact-btns">
+                <a href="https://los-angeles-barbershop.square.site" target="_blank" class="contact-btn primary">Book Online</a>
+                <a href="tel:+13237496132" class="contact-btn">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">LOS ANGELES BARBERSHOP</div>
+            <div class="social-links">
+                <a href="https://instagram.com/los_angeles.barbershop" target="_blank" aria-label="Instagram">📷</a>
+            </div>
+            <div class="footer-info">
+                <p>3320 E Gage Ave, Huntington Park, CA 90255</p>
+                <p>(323) 749-6132</p>
+                <p>&copy; 2026 Los Angeles Barbershop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Mobile menu toggle (basic functionality)
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn?.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'rgba(10, 10, 10, 0.98)';
+                navLinks.style.padding = '2rem';
+                navLinks.style.gap = '1.5rem';
+            }
+        });
+    </script>
+
+</body>
+</html>
