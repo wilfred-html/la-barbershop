@@ -661,10 +661,12 @@ const chatHTML=`
       </div>
     </div>
     <div id="chat-suggestions">
-      <button class="chat-suggestion" data-msg="What services do you offer?">Services</button>
-      <button class="chat-suggestion" data-msg="Tell me about the barbers">Barbers</button>
-      <button class="chat-suggestion" data-msg="I want to book a haircut">Book a cut</button>
-      <button class="chat-suggestion" data-msg="What are your hours?">Hours</button>
+      <button class="chat-suggestion" data-msg="Show me your services and prices">💈 Services</button>
+      <button class="chat-suggestion" data-msg="Who are the barbers? Show me">✂️ Barbers</button>
+      <button class="chat-suggestion" data-msg="I want to book a cut right now">📅 Book Now</button>
+      <button class="chat-suggestion" data-msg="How do I get to the shop?">📍 Directions</button>
+      <button class="chat-suggestion" data-msg="Any deals or specials going on?">🔥 Specials</button>
+      <button class="chat-suggestion" data-msg="Show me your gallery">📸 Gallery</button>
     </div>
     <form id="chat-form">
       <input id="chat-input" type="text" placeholder="Ask anything..." autocomplete="off">
@@ -832,12 +834,16 @@ async function sendMessage(text){
     
     const data=await res.json();
     const reply=data.reply||"My bad, something glitched. Call us at (323) 749-6132 and we'll sort you out! 💈";
+    const action=data.action||null;
     
     // Convert URLs to links
     const linked=reply.replace(/(https?:\/\/[^\s]+)/g,'<a href="$1" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">$1</a>');
     
     addMsg(linked,'bot');
     history.push({role:'assistant',content:reply});
+    
+    // Execute action if present
+    if(action)executeAction(action);
   }catch(err){
     hideTyping();
     addMsg("Looks like I'm having trouble connecting. Hit up the shop directly at <a href='tel:+13237496132' style='color:inherit;text-decoration:underline'>(323) 749-6132</a> 💈",'bot');
@@ -856,6 +862,55 @@ form.addEventListener('submit',e=>{
 document.querySelectorAll('.chat-suggestion').forEach(btn=>{
   btn.addEventListener('click',()=>sendMessage(btn.dataset.msg));
 });
+
+// Action executor — chatbot controls the page
+function executeAction(action){
+  if(!action||!action.type||!action.target)return;
+  
+  const t=action.type;
+  const tgt=action.target;
+  
+  if(t==='scroll'){
+    const section=document.getElementById(tgt);
+    if(section){
+      // Minimize chat on mobile so user sees the section
+      if(window.innerWidth<600){
+        chatOpen=false;
+        win.classList.remove('open');
+        iconOpen.style.display='block';
+        iconClose.style.display='none';
+      }
+      section.scrollIntoView({behavior:'smooth',block:'start'});
+      // Flash highlight on the section
+      section.style.transition='box-shadow .4s';
+      section.style.boxShadow='inset 0 0 0 3px rgba(255,255,255,.15)';
+      setTimeout(()=>{section.style.boxShadow='none'},1500);
+    }
+  }
+  
+  if(t==='open'){
+    if(tgt==='booking') window.open('https://los-angeles-barbershop.square.site/','_blank');
+    if(tgt==='call') window.location.href='tel:+13237496132';
+    if(tgt==='instagram') window.open('https://instagram.com/los_angeles.barbershop','_blank');
+    if(tgt==='maps') window.open('https://www.google.com/maps/dir/?api=1&destination=3320+E+Gage+Ave+Huntington+Park+CA+90255','_blank');
+  }
+  
+  if(t==='highlight'){
+    if(tgt==='promo'){
+      const promo=document.querySelector('.promo');
+      if(promo){
+        promo.scrollIntoView({behavior:'smooth',block:'center'});
+        promo.style.transition='all .3s';
+        promo.style.background='#1a1a1a';
+        setTimeout(()=>{promo.style.background='#000'},300);
+        setTimeout(()=>{promo.style.background='#1a1a1a'},600);
+        setTimeout(()=>{promo.style.background='#000'},900);
+        setTimeout(()=>{promo.style.background='#1a1a1a'},1200);
+        setTimeout(()=>{promo.style.background='#000'},1500);
+      }
+    }
+  }
+}
 })();
 </script>
 </body>
