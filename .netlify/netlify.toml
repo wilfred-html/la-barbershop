@@ -1,14 +1,13 @@
+functionsDirectory = "/home/node/.openclaw/workspace/la-barbershop/netlify/functions"
+functionsDirectoryOrigin = "default"
 plugins = []
 headers = []
 redirects = []
 
-[functions]
-
-[functions."*"]
-
 [build]
 publish = "/home/node/.openclaw/workspace/la-barbershop"
 publishOrigin = "default"
+functions = "/home/node/.openclaw/workspace/la-barbershop/netlify/functions"
 
 [build.environment]
 
@@ -23,3 +22,7 @@ publishOrigin = "default"
 [build.processing.js]
 
 [build.services]
+
+[functions]
+
+[functions."*"]
